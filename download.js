@@ -1,27 +1,4 @@
-function h(tag, attr = {}, children = []) {
-    const el = document.createElement(tag)
-    for (const key in attr) {
-        el[key] = attr[key]
-    }
-    for (const child of children) {
-        el.appendChild(child)
-    }
-    return el
-}
-(async () => {
-    const files = await (await fetch('demo-download-sources.json')).json()
-    const filesEl = document.querySelector('.demo-files')
-    filesEl.innerHTML = ''
-    for (const file of files) {
-        filesEl.append(h('div', {}, [
-            h('div', { className: 'name', innerText: `${file.name}` }),
-            h('div', { className: 'hash', innerText: `SHA256: ${file.sha256}` }),
-            h('a', { className: 'button vt', innerText: `VirusTotal 查毒报告`, href: file.virustotal }),
-            ...file.sources.map(source => h('a', {
-                className: 'button d',
-                href: source.url,
-                innerText: `从 ${source.name} 下载`
-            }))
-        ]))
-    }
-})()
+'use strict';function c(e,a,d){a=void 0===a?{}:a;d=void 0===d?[]:d;var f=document.createElement(e),g;for(g in a)f[g]=a[g];d.forEach(function(b){f.appendChild(b)});return f}
+(function(e){var a=new XMLHttpRequest;a.addEventListener("load",function(){e(JSON.parse(a.responseText))});a.open("GET","demo-download-sources.json");a.send()})(function(e){var a=document.querySelector(".demo-files");a.innerHTML="";var d=e.shift(),f=[c("div",{className:"name",innerText:"\u6700\u65b0\u7248\u672c\uff1a"+d.name}),c("div",{className:"hash",innerText:"SHA256: "+d.g}),c("a",{className:"button vt",innerText:"VirusTotal \u67e5\u6bd2\u62a5\u544a",href:d.h})];d.sources.forEach(function(b){return f.push(c("a",
+{className:"button d",href:b.url,innerText:"\u4ece "+b.name+" \u4e0b\u8f7d"}))});a.append(c("div",{className:"file show"},f));var g=e.map(function(b){var h=[c("div",{className:"name",innerText:b.name}),c("div",{className:"hash",innerText:"SHA256: "+b.g}),c("a",{className:"button vt",innerText:"VirusTotal \u67e5\u6bd2\u62a5\u544a",href:b.h})];b.sources.forEach(function(k){return h.push(c("a",{className:"button d",href:k.url,innerText:"\u4ece "+k.name+" \u4e0b\u8f7d"}))});return c("div",{className:"file"},
+h)});e=c("div",{className:"showall",innerText:"\u663e\u793a\u5386\u53f2\u7248\u672c",onclick:function(){g.forEach(function(b){return b.classList.toggle("show")})}});a.append(e);g.forEach(function(b){return a.append(b)})});
