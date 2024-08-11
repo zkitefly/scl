@@ -50,8 +50,8 @@ impl<R: Reporter> OptifineDownloadExt for Downloader<R> {
         vanilla_version: &str,
     ) -> DynResult<Vec<OptifineVersionMeta>> {
         let mut res: Vec<OptifineVersionMeta> = crate::http::retry_get_json(&match self.source {
-            DownloadSource::MCBBS => {
-                format!("https://download.mcbbs.net/optifine/{vanilla_version}")
+            DownloadSource::BMCLAPI => {
+                format!("https://bmclapi2.bangbang93.com/optifine/{vanilla_version}")
             }
             _ => format!("https://bmclapi2.bangbang93.com/optifine/{vanilla_version}"),
         })
@@ -74,18 +74,15 @@ impl<R: Reporter> OptifineDownloadExt for Downloader<R> {
         ));
         let uris = [
             match self.source {
-                DownloadSource::MCBBS => {
+                DownloadSource::BMCLAPI => {
                     format!(
-                        "https://download.mcbbs.net/optifine/{vanilla_version}/{optifine_type}/{optifine_patch}"
+                        "https://bmclapi2.bangbang93.com/optifine/{vanilla_version}/{optifine_type}/{optifine_patch}"
                     )
                 }
                 _ => format!(
                     "https://bmclapi2.bangbang93.com/optifine/{vanilla_version}/{optifine_type}/{optifine_patch}"
                 ),
             },
-            format!(
-                "https://download.mcbbs.net/optifine/{vanilla_version}/{optifine_type}/{optifine_patch}"
-            ),
             format!(
                 "https://bmclapi2.bangbang93.com/optifine/{vanilla_version}/{optifine_type}/{optifine_patch}"
             ),

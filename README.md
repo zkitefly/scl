@@ -60,7 +60,7 @@
 - [x] 正版登录（Microsoft）
 - [x] 第三方登录（统一通行证）
 - [x] 第三方登录（Authlib-Injector）
-- [x] 更换下载源（BMCLAPI MCBBS MC）
+- [x] 更换下载源（BMCLAPI MC）
 - [x] 多 .minecraft 文件夹
 - [x] MacOS 支持
 - [ ] 代码结构优化（目前代码还是很乱，命名也不太规范）
